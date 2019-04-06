@@ -15,7 +15,7 @@ namespace C0725642_Assignment___4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
-            p.Wordfinder();
+            p.Wordskipper();
             Console.ReadLine();
         }
         public void Run()
@@ -25,7 +25,7 @@ namespace C0725642_Assignment___4
         public void ReadTextFiles()
         {
             // Read file using StreamReader. Read file line by line
-            using (StreamReader file = new StreamReader("U:/Users/725642report1.txt"))
+            using (StreamReader file = new StreamReader("report1.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -54,7 +54,7 @@ namespace C0725642_Assignment___4
         public void CountLinesReader()
         {
             long lineCounter = 0;
-            using (StreamReader fil = new StreamReader("U:/Users/725642report1.txt"))
+            using (StreamReader fil = new StreamReader("report1.txt"))
             {
                 while (fil.ReadLine() != null)
                 {
@@ -65,7 +65,7 @@ namespace C0725642_Assignment___4
         }
         public void WordCounter()
         {
-            StreamReader reader = new StreamReader("U:/Users/725642report1.txt");
+            StreamReader reader = new StreamReader("report1.txt");
             string script = reader.ReadToEnd();
             var text = script.Trim();
             int wordCount = 0, index = 0;
@@ -84,7 +84,7 @@ namespace C0725642_Assignment___4
         public void Wordfinder()
         {
             int f = 0;
-            foreach (var line in File.ReadAllLines("U:/Users/725642report1.txt"))
+            foreach (var line in File.ReadAllLines("report1.txt"))
             {
                 if (line.Contains("sea") && line.Contains("fare"))
                 {
@@ -92,6 +92,28 @@ namespace C0725642_Assignment___4
                 }
             }
             Console.WriteLine(f);
+        }
+        public void Wordskipper()
+        {
+            int f = 0;
+            int m = 0;
+            int n = 0;
+            foreach (var line in File.ReadAllLines("report1.txt"))
+            {
+                if (line.Contains("fare"))
+                {
+                    f++;
+                }
+            }
+            foreach (var line in File.ReadAllLines("report1.txt"))
+            {
+                if (line.Contains("war") && line.Contains("fare"))
+                {
+                    m++;
+                }
+            }
+            n = f - m;
+            Console.WriteLine(n);
         }
     }
 }
