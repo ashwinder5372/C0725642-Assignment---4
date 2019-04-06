@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Linq;                                                                                  
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,8 +38,9 @@ namespace C0725642_Assignment___4
                     }
                     file.Close();
                     Console.WriteLine($"File has {counter } lines.");
+                Console.WriteLine($"File has {counter*5 } Words.");
 
-                }
+            }
             }
 
             public int FindNumberOfBlankSpaces(string line)
