@@ -15,7 +15,7 @@ namespace C0725642_Assignment___4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
-            p.Wordskipper();
+            p.Letters();
             Console.ReadLine();
         }
         public void Run()
@@ -25,7 +25,7 @@ namespace C0725642_Assignment___4
         public void ReadTextFiles()
         {
             // Read file using StreamReader. Read file line by line
-            using (StreamReader file = new StreamReader("report1.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/725642report.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -54,7 +54,7 @@ namespace C0725642_Assignment___4
         public void CountLinesReader()
         {
             long lineCounter = 0;
-            using (StreamReader fil = new StreamReader("report1.txt"))
+            using (StreamReader fil = new StreamReader("U:/Users/725642report.txt"))
             {
                 while (fil.ReadLine() != null)
                 {
@@ -65,7 +65,7 @@ namespace C0725642_Assignment___4
         }
         public void WordCounter()
         {
-            StreamReader reader = new StreamReader("report1.txt");
+            StreamReader reader = new StreamReader("U:/Users/725642report.txt");
             string script = reader.ReadToEnd();
             var text = script.Trim();
             int wordCount = 0, index = 0;
@@ -84,36 +84,53 @@ namespace C0725642_Assignment___4
         public void Wordfinder()
         {
             int f = 0;
-            foreach (var line in File.ReadAllLines("report1.txt"))
+            foreach (var line in File.ReadAllLines("U:/Users/725642report.txt"))
             {
+                f++;
                 if (line.Contains("sea") && line.Contains("fare"))
                 {
-                    f++;
+                    Console.WriteLine(f);
                 }
             }
-            Console.WriteLine(f);
         }
         public void Wordskipper()
         {
             int f = 0;
-            int m = 0;
-            int n = 0;
-            foreach (var line in File.ReadAllLines("report1.txt"))
+            foreach (var line in File.ReadAllLines("U:/Users/725642report.txt"))
             {
-                if (line.Contains("fare"))
+                f++;
+                if (line.Contains("fare") && (!line.Contains("war")))
                 {
-                    f++;
+                    Console.WriteLine(f);
                 }
             }
-            foreach (var line in File.ReadAllLines("report1.txt"))
+        }
+        public void Letters()
+        {
+            StreamReader reader = new StreamReader("U:/Users/725642report.txt");
+            string script = reader.ReadToEnd();
+            //find number of letters
+            int numberOfLetters = 0;
+            foreach (char letter in script)
             {
-                if (line.Contains("war") && line.Contains("fare"))
-                {
-                    m++;
-                }
+                numberOfLetters++;
             }
-            n = f - m;
-            Console.WriteLine(n);
+            var text = script.Trim();
+            int wordCount = 0, index = 0;
+            //find number of words
+            while (index < text.Length)
+            {
+                // check if current char is part of a word
+                while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                    index++;
+                wordCount++;
+                // skip whitespace until next word
+                while (index < text.Length && char.IsWhiteSpace(text[index]))
+                    index++;
+            }
+            //find average
+            float avrg = numberOfLetters / wordCount;
+            Console.WriteLine(avrg);
         }
     }
 }
